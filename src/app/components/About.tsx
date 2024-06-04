@@ -1,5 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
+import nextConfig from "../../../next.config.mjs";
+const BASE_PATH = nextConfig.basePath || "";
 
 const About = () => {
   return (
@@ -11,7 +13,7 @@ const About = () => {
         <hr className="w-1/12 mt-4 mx-auto border-2 border-black" />
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
-            <Image src="/about_me.jpg" width={10000} height={10000} alt="Kengo" className="w-full rounded-3xl" />
+            <Image src={`${BASE_PATH}/about_me.jpg`} width={10000} height={10000} alt="Kengo" className="w-full rounded-3xl" />
           </div>
           <div className='space-y-3'>
             <h3 className="text-3xl font-bold">Greeting</h3>
