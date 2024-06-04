@@ -3,26 +3,39 @@
 @tailwind utilities;
 
 @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: white; }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
 }
 
-@keyframes box-animation{
-  from { width: 0; }
-  to { width: 100%; }
+@keyframes box-animation {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .typing {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid white; /* The typwriter cursor */
+  border-right: 0.15em solid white; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  animation: 
+  animation:
     typing 2s steps(21, end),
-    blink-caret .75s step-end infinite;
+    blink-caret 0.75s step-end infinite;
 }
