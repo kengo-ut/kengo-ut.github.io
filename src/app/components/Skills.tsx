@@ -97,6 +97,12 @@ const Skills = () => {
                 textColor='text-red-500'
                 bgColor='bg-red-500'
               />
+              <SkillLevel
+                Icon={FaGolang}
+                level={1}
+                textColor='text-red-500'
+                bgColor='bg-red-500'
+              />
             </div>
           </div>
           <div className='bg-white p-10 rounded-3xl space-y-5 border-black border-2'>
