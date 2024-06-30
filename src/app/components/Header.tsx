@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
 
 const navItems = [
   { id: 1, name: 'About', href: '/#aboutme' },
@@ -30,6 +31,15 @@ const Header = () => {
             {item.name}
           </Link>
         ))}
+        <Link
+          href='https://drive.google.com/file/d/16STS4soYKKhji0XmP0A-Ab23ZZDAR9o-/view?usp=drive_link'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='hover:text-gray-300 transition-colors mt-1'
+        >
+          CV
+          <FaExternalLinkSquareAlt className='inline mx-1 mb-1' />
+        </Link>
       </nav>
     </header>
   )
