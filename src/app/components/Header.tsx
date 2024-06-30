@@ -18,6 +18,7 @@ const Header = () => {
         {/* <MyIcon className="w-14 h-14" /> */}
         <span className='text-5xl hover:text-gray-300 transition-colors'>KENGO</span>
       </Link>
+      {/* ハンバーガーメニューの実装 */}
       <nav className='hidden md:flex items-center gap-6 font-medium text-3xl'>
         {navItems.map((item) => (
           <Link
