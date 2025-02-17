@@ -1,41 +1,66 @@
+/* src/app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
+@layer base {
+  :root {
+    --background: 0 0% 98%; /* Very light gray */
+    --foreground: 212 75% 25%; /* Navy blue #0F4573 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 212 75% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 212 75% 25%;
+
+    --primary: 212 75% 25%; /* Navy blue #0F4573 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 212 75% 25%;
+
+    --accent: 1 91% 72%; /* Coral pink #FA7472 */
+    --accent-foreground: 212 75% 25%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 212 75% 25%;
   }
 }
 
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
+@layer base {
+  * {
+    @apply border-border;
   }
-  50% {
-    border-color: white;
+  body {
+    @apply bg-background text-foreground;
   }
-}
-
-@keyframes box-animation {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-primary font-bold;
   }
 }
 
-.typing {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid white; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  animation:
-    typing 2s steps(21, end),
-    blink-caret 0.75s step-end infinite;
+/* Custom utility classes */
+@layer utilities {
+  .text-accent-coral {
+    @apply text-[#FA7472];
+  }
+  .text-navy {
+    @apply text-[#0B3559];
+  }
+  .bg-accent-coral {
+    @apply bg-[#FA7472];
+  }
+  .bg-navy {
+    @apply bg-[#0B3559];
+  }
 }

@@ -1,12 +1,27 @@
-# dotfile
-.env*
-
-# markdown
+node_modules/
+.next/
+.yarn/
+.nuxt/
+.astro/
+build/
+dist/
+out/
+public/
+pnpm-lock.yaml
 *.md
+src/lib/*
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
+# Config files
+.pnp.cjs
+.pnp.loader.mjs
+.prettierrc
+components.json
+eslint.config.mjs
+next-env.d.ts
+next.config.ts
+package-lock.json
+package.json
+postcss.config.mjs
+tailwind.config.ts
+tsconfig.json
+yarn.lock
