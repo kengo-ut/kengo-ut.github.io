@@ -54,3 +54,4 @@ const nextConfig: NextConfig = {
 
 export default nextConfig;
 ```
+- add GAS_URL as secret in GitHub Actions
