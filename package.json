@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src/",
-    "fmt": "prettier --write ."
+    "fmt": "prettier --write src/"
   },
   "dependencies": {
     "@radix-ui/react-progress": "^1.1.2",
