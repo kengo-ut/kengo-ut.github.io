@@ -107,3 +107,14 @@ export interface AwardInfo {
 export interface FooterInfo {
   name: string;
 }
+
+export interface ProjectInfo {
+  title: string;
+  period: string;
+  description: string;
+  image?: string;
+  features?: string[];
+  technologies: string[];
+  demoUrl?: string;
+  repoUrl?: string;
+}

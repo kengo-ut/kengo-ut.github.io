@@ -8,6 +8,7 @@ const navigation = [
   { name: "About", href: "#about" },
   { name: "Education", href: "#education" },
   { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
   { name: "Publications", href: "#publications" },
   { name: "Certifications", href: "#certifications" },
@@ -78,7 +79,7 @@ const Header = () => {
         {/* Mobile menu button */}
         <motion.button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden p-2 rounded-lg hover:bg-accent/10"
+          className="xl:hidden rounded-lg hover:bg-accent/10"
           aria-label="Toggle menu"
           whileTap={{ scale: 0.95 }}
         >
@@ -100,7 +101,7 @@ const Header = () => {
         </motion.button>
 
         {/* Desktop navigation */}
-        <div className="hidden lg:flex lg:gap-x-8">
+        <div className="hidden xl:flex lg:gap-x-8">
           {navigation.map((item) => (
             <Link
               key={item.name}

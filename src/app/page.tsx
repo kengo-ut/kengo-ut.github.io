@@ -7,6 +7,7 @@ import Certifications from "@/components/sections/Certifications";
 import Education from "@/components/sections/Education";
 import Experience from "@/components/sections/Experience";
 import Hero from "@/components/sections/Hero";
+import Projects from "@/components/sections/Projects";
 import Publications from "@/components/sections/Publications";
 import Skills from "@/components/sections/Skills";
 
@@ -14,6 +15,7 @@ const sections = [
   About,
   Education,
   Experience,
+  Projects,
   Skills,
   Publications,
   Certifications,
