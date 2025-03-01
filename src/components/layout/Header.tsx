@@ -118,7 +118,7 @@ const Header = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="lg:hidden absolute w-full"
+            className="xl:hidden absolute w-full"
             initial="closed"
             animate="open"
             exit="closed"
