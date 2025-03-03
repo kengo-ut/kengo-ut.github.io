@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { apiUrl } from "@/lib/config";
 import { AwardInfo } from "@/types";
 import { fetchData } from "@/utils";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const urlAwards: string = `${apiUrl}?sheetName=Awards&cell=A1`;
@@ -43,7 +44,14 @@ const Awards = () => {
                       name="Trophy"
                       className="h-6 w-6 text-accent-coral flex-shrink-0"
                     />
-                    <CardTitle className="text-lg font-bold text-navy">{award.title}</CardTitle>
+                    <Link
+                      href={award.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      <CardTitle className="text-lg font-bold text-navy">{award.title}</CardTitle>
+                    </Link>
                   </div>
 
                   {/* 右側: 日付 */}

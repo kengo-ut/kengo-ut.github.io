@@ -61,7 +61,7 @@ const Experience = () => {
                     href={exp.company.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-accent-coral"
+                    className="underline hover:text-accent-coral"
                   >
                     {exp.company.name},
                   </Link>

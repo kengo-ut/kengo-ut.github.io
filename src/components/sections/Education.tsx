@@ -61,7 +61,7 @@ const Education = () => {
                     href={edu.school.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-accent-coral"
+                    className="underline hover:text-accent-coral"
                   >
                     {edu.school.name},
                   </Link>

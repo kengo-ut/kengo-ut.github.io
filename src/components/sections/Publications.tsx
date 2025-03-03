@@ -90,7 +90,7 @@ const Publications = () => {
                       href={pub.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-accent-coral hover:text-accent-coral hover:underline"
+                      className="inline-flex items-center underline hover:text-accent-coral"
                     >
                       <DynamicIcon name="ExternalLink" className="h-4 w-4 mr-2" />
                       View Publication

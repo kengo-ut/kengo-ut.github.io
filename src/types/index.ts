@@ -99,6 +99,7 @@ export interface AchievementInfo {
 
 export interface AwardInfo {
   title: string;
+  link: string;
   conference: string;
   date: string;
   description: string;
