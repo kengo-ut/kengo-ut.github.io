@@ -18,6 +18,7 @@ import {
   Settings,
   TrendingUp,
   Trophy,
+  UserCircle,
   Users,
 } from "lucide-react";
 import { FaChalkboardTeacher } from "react-icons/fa";
@@ -44,6 +45,7 @@ const iconList = {
   Settings,
   Trophy,
   TrendingUp,
+  UserCircle,
   Users,
   FaChalkboardTeacher,
   FaGithub,

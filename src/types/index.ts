@@ -51,14 +51,19 @@ export interface EducationInfo {
 }
 
 export interface ExperienceInfo {
-  position: string;
+  projectTitle: string;
   period: string;
   company: {
     name: string;
     link: string;
   };
   location: string;
-  description: string[];
+  position: string;
+  description: {
+    overview: string;
+    detail: string;
+    responsibilities: string[];
+  };
   technologies: string[];
 }
 

@@ -44,14 +44,16 @@ const Awards = () => {
                       name="Trophy"
                       className="h-6 w-6 text-accent-coral flex-shrink-0"
                     />
-                    <Link
-                      href={award.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline"
-                    >
-                      <CardTitle className="text-lg font-bold text-navy">{award.title}</CardTitle>
-                    </Link>
+                    <CardTitle className="text-lg font-bold text-navy hover:text-accent-coral">
+                      <Link
+                        href={award.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline"
+                      >
+                        {award.title}
+                      </Link>
+                    </CardTitle>
                   </div>
 
                   {/* 右側: 日付 */}
