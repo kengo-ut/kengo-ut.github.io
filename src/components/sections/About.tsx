@@ -1,11 +1,12 @@
 import DynamicIcon from "@/components/common/DynamicIcon";
-import { Badge } from "@/components/ui/badge";
+import MiniCard from "@/components/common/MiniCard";
+import Section from "@/components/common/Section";
+import StandardCard from "@/components/common/StandardCard";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import { apiUrl } from "@/lib/config";
 import { CoreCompetency, ImageSlide, PersonalInfo } from "@/types";
 import { fetchData } from "@/utils";
-import { ChevronLeft, ChevronRight, FileText, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -67,134 +68,100 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header - Matching Education style */}
-        <h2 className="text-3xl font-bold mb-12">
-          <span className="text-navy">About</span>
-          <span className="text-accent-coral"> Me</span>
-        </h2>
-
-        {/* Profile Header */}
-        <Card className="w-full mb-12">
-          <CardHeader>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-              <CardTitle className="text-xl font-bold mb-2 md:mb-0">{personalInfo.role}</CardTitle>
-              <div className="flex items-center gap-4 text-gray-600">
-                <div className="flex items-center">
-                  <MapPin className="h-4 w-4 mr-2" />
-                  {personalInfo.location}
-                </div>
-              </div>
-            </div>
-          </CardHeader>
-
-          <CardContent>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Image Gallery */}
-              <div className="relative w-full aspect-[3/2] group">
-                <div className="relative w-full h-full overflow-hidden rounded-xl">
-                  {/* Image Container with Transition */}
-                  <div
-                    className="absolute w-full h-full transition-opacity duration-500 ease-in-out"
-                    style={{
-                      opacity: isTransitioning ? 0.5 : 1,
-                    }}
-                  >
-                    <Image
-                      src={profileImages[currentImage].src}
-                      alt={profileImages[currentImage].alt}
-                      fill
-                      className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      priority
-                    />
-                  </div>
-
-                  {/* Navigation Buttons with Hover Effect */}
-                  <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button
-                      onClick={prevImage}
-                      className="bg-white/80 hover:bg-white text-navy rounded-full p-2 shadow-md transition-all transform hover:-translate-x-1"
-                      aria-label="Previous image"
-                      disabled={isTransitioning}
-                    >
-                      <ChevronLeft className="h-6 w-6" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="bg-white/80 hover:bg-white text-navy rounded-full p-2 shadow-md transition-all transform hover:translate-x-1"
-                      aria-label="Next image"
-                      disabled={isTransitioning}
-                    >
-                      <ChevronRight className="h-6 w-6" />
-                    </button>
-                  </div>
-
-                  {/* Dots Indicator - Positioned inside the image */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 bg-black/20 rounded-full px-3 py-2 backdrop-blur-sm">
-                    {profileImages.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleImageTransition(index)}
-                        disabled={isTransitioning}
-                        className={`transition-all duration-300 ${
-                          currentImage === index
-                            ? "w-4 h-2 bg-[#FA7472] rounded-full"
-                            : "w-2 h-2 bg-white rounded-full hover:bg-white/75"
-                        }`}
-                        aria-label={`Go to image ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
+    <Section id="about" title="About Me">
+      <StandardCard
+        cardTitle={personalInfo.role}
+        info={personalInfo.location}
+        iconMain="User"
+        iconSub="MapPin"
+      >
+        <CardContent className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Image Gallery */}
+          <div className="relative w-full aspect-[3/2] group">
+            <div className="relative w-full h-full overflow-hidden rounded-xl">
+              {/* Image Container with Transition */}
+              <div
+                className="absolute w-full h-full transition-opacity duration-500 ease-in-out"
+                style={{
+                  opacity: isTransitioning ? 0.5 : 1,
+                }}
+              >
+                <Image
+                  src={profileImages[currentImage].src}
+                  alt={profileImages[currentImage].alt}
+                  fill
+                  className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
               </div>
 
-              {/* Bio Section */}
-              <div className="flex flex-col gap-4">
-                <div className="prose prose-navy max-w-none">
-                  <p className="text-gray-600 whitespace-pre-line">
-                    {personalInfo.selfIntroduction}
-                  </p>
-                </div>
-
-                {/* Download Resume Button */}
-                <Link href={personalInfo.resumeLink} target="_blank" rel="noopener noreferrer">
-                  <Button
-                    variant="outline"
-                    className="w-full border-accent-coral text-navy hover:bg-accent-coral hover:text-white"
-                  >
-                    <FileText className="mr-2 h-4 w-4" />
-                    Download Resume
-                  </Button>
-                </Link>
+              {/* Navigation Buttons with Hover Effect */}
+              <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button
+                  onClick={prevImage}
+                  className="bg-background/80 hover:bg-background rounded-full p-2 shadow-md transition-all transform hover:-translate-x-1"
+                  aria-label="Previous image"
+                  disabled={isTransitioning}
+                >
+                  <DynamicIcon name="ChevronLeft" size={20} />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="bg-background/80 hover:bg-background rounded-full p-2 shadow-md transition-all transform hover:translate-x-1"
+                  aria-label="Next image"
+                  disabled={isTransitioning}
+                >
+                  <DynamicIcon name="ChevronRight" size={20} />
+                </button>
               </div>
-            </div>
-          </CardContent>
-        </Card>
 
-        {/* Core Competencies */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {coreCompetencies.map((competency, index) => (
-            <Card key={index}>
-              <CardHeader className="flex flex-row items-center gap-3">
-                <div className="flex items-center gap-2">
-                  <DynamicIcon name={competency.icon} />
-                  <CardTitle className="font-semibold">{competency.category}</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-2">
-                {competency.skills.map((skill, i) => (
-                  <Badge key={i} variant="outline" className="text-gray-600">
-                    {skill}
-                  </Badge>
+              {/* Dots Indicator - Positioned inside the image */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 bg-background/20 rounded-full px-3 py-2 backdrop-blur-sm">
+                {profileImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleImageTransition(index)}
+                    disabled={isTransitioning}
+                    className={`transition-all duration-300 ${
+                      currentImage === index
+                        ? "w-4 h-2 bg-accent rounded-full"
+                        : "w-2 h-2 bg-background rounded-full hover:bg-background/80"
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
                 ))}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bio Section */}
+          <div className="flex flex-col gap-4">
+            <p className="whitespace-pre-line">{personalInfo.selfIntroduction}</p>
+
+            {/* Download Resume Button */}
+            <Button asChild variant="outline">
+              <Link href={personalInfo.resumeLink} target="_blank" rel="noopener noreferrer">
+                <DynamicIcon name="FileText" />
+                Download Resume
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </StandardCard>
+
+      {/* Core Competencies */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {coreCompetencies.map((competency, index) => (
+          <MiniCard
+            key={index}
+            category={competency.category}
+            iconName={competency.icon}
+            skills={competency.skills}
+          />
+        ))}
       </div>
-    </section>
+    </Section>
   );
 };
 

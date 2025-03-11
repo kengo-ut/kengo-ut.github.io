@@ -54,7 +54,7 @@ const Hero = () => {
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-8">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              Hi, I&apos;m <span className="text-accent-coral">{heroInfo.name}</span>
+              Hi, I&apos;m <span className="text-accent">{heroInfo.name}</span>
             </h1>
 
             <p className="text-lg md:text-xl mb-8 text-white/90 whitespace-pre-line">
@@ -66,9 +66,8 @@ const Hero = () => {
                   <Link key={index} href={item.link} target="_blank" rel="noopener noreferrer">
                     <DynamicIcon
                       name={item.icon}
-                      color="text-white"
                       size={40}
-                      className="hover:text-[#FA7472] transition-colors"
+                      className="hover:text-accent transition-colors"
                     />
                   </Link>
                 ))}

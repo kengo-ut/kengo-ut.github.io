@@ -43,7 +43,7 @@ export interface EducationInfo {
   period: string;
   advisor: string;
   gpa?: string;
-  research?: {
+  research: {
     title: string;
     description: string;
     keywords: string[];

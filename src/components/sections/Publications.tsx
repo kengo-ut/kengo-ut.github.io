@@ -1,6 +1,9 @@
 import DynamicIcon from "@/components/common/DynamicIcon";
+import Section from "@/components/common/Section";
+import StandardCard from "@/components/common/StandardCard";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardFooter } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { apiUrl } from "@/lib/config";
 import { PublicationInfo } from "@/types";
 import { fetchData } from "@/utils";
@@ -25,84 +28,70 @@ const Publications = () => {
     });
   }, []);
   return (
-    <section id="publications" className="py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
-        <h2 className="text-3xl font-bold mb-12">
-          <span className="text-navy">Research</span>
-          <span className="text-accent-coral"> Publications</span>
-        </h2>
+    <Section id="publications" title="Publications">
+      {/* Publications List */}
+      <div className="flex flex-col gap-8">
+        {publications.map((pub, index) => (
+          <StandardCard
+            key={index}
+            cardTitle={pub.title}
+            info={pub.date}
+            iconMain="BookOpen"
+            iconSub="Calendar"
+          >
+            {/* Publication Info */}
+            <CardContent className="flex flex-col gap-4">
+              <div className="flex items-center gap-2">
+                <DynamicIcon name="Users" />
+                {pub.authors.join(", ")}
+              </div>
 
-        {/* Publications List */}
-        <div className="space-y-12">
-          {publications.map((pub, index) => (
-            <Card key={index} className="w-full">
-              {/* Header */}
-              <CardHeader>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="flex items-center gap-2">
-                    <DynamicIcon name="BookOpen" className="h-6 w-6 flex-shrink-0" />
-                    <CardTitle className="text-xl font-bold text-navy flex items-center">
-                      {pub.title}
-                    </CardTitle>
-                  </div>
-                  <div className="flex items-center text-gray-600 gap-2 mt-4 md:mt-0">
-                    <DynamicIcon name="Calendar" color="gray" />
-                    {pub.date}
-                  </div>
+              {/* Conference Info */}
+              <div className="flex items-center gap-2">
+                <DynamicIcon name="Landmark" />
+                {pub.conference}
+              </div>
+            </CardContent>
+
+            <Separator className="mb-4" />
+
+            {/* Abstract */}
+            <CardFooter className="flex flex-col items-start gap-4">
+              <div className="flex flex-col gap-2">
+                <h4 className="text-lg font-semibold text-primary">Abstract</h4>
+                {pub.abstract}
+              </div>
+
+              {/* Keywords (if any) */}
+              {pub.keywords && pub.keywords.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {pub.keywords.map((keyword, i) => (
+                    <Badge key={i} variant="secondary">
+                      {keyword}
+                    </Badge>
+                  ))}
                 </div>
-              </CardHeader>
+              )}
 
-              {/* Publication Info */}
-              <CardContent className="text-gray-600">
-                <div className="flex items-center gap-2 mb-4">
-                  <DynamicIcon name="Users" color="gray" />
-                  {pub.authors.join(", ")}
+              {/* Link to Full Publication */}
+              {pub.link && (
+                <div>
+                  <Link
+                    href={pub.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center underline hover:text-accent gap-2"
+                  >
+                    <DynamicIcon name="ExternalLink" />
+                    View Publication
+                  </Link>
                 </div>
-
-                {/* Conference Info */}
-                <div className="flex items-center gap-2 mb-4">
-                  <DynamicIcon name="Landmark" color="gray" />
-                  {pub.conference}
-                </div>
-
-                {/* Abstract */}
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                  <h4 className="text-lg font-semibold text-navy mb-3">Abstract</h4>
-                  <p className="text-gray-600">{pub.abstract}</p>
-                </div>
-
-                {/* Keywords (if any) */}
-                {pub.keywords && pub.keywords.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {pub.keywords.map((keyword, i) => (
-                      <Badge key={i} variant="outline" className="text-gray-600">
-                        {keyword}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-
-                {/* Link to Full Publication */}
-                {pub.link && (
-                  <div className="mt-4">
-                    <Link
-                      href={pub.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center underline hover:text-accent-coral"
-                    >
-                      <DynamicIcon name="ExternalLink" className="h-4 w-4 mr-2" />
-                      View Publication
-                    </Link>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              )}
+            </CardFooter>
+          </StandardCard>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 };
 

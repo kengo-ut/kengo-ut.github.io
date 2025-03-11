@@ -1,4 +1,5 @@
 // src/components/layout/Header.tsx
+import ModeToggle from "@/components/common/ModeToggle";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -68,9 +69,10 @@ const Header = () => {
         aria-label="Global"
       >
         {/* Logo */}
-        <div className="flex lg:flex-1">
+        <div className="flex items-center gap-x-4">
+          <ModeToggle />
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-bold text-navy hover:text-accent-coral transition-colors">
+            <span className="text-xl font-bold text-primary hover:text-accent transition-colors">
               KENGO
             </span>
           </Link>
@@ -92,9 +94,9 @@ const Header = () => {
               transition={{ duration: 0.2 }}
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6 text-navy" />
+                <X className="h-6 w-6 text-primary" />
               ) : (
-                <Menu className="h-6 w-6 text-navy" />
+                <Menu className="h-6 w-6 text-primary" />
               )}
             </motion.div>
           </AnimatePresence>
@@ -106,7 +108,7 @@ const Header = () => {
             <Link
               key={item.name}
               href={item.href}
-              className="text-md font-semibold text-navy hover:text-accent-coral transition-colors"
+              className="text-md font-semibold text-primary hover:text-accent transition-colors"
             >
               {item.name}
             </Link>
@@ -131,8 +133,7 @@ const Header = () => {
                     <motion.div key={item.name} variants={itemVariants}>
                       <Link
                         href={item.href}
-                        className="block px-4 py-2 text-navy font-semibold hover:text-accent-coral hover:bg-accent/10 
-                                 rounded-lg transition-colors"
+                        className="block px-4 py-2 text-primary font-semibold hover:text-accent hover:bg-accent/10 rounded-lg transition-colors"
                       >
                         {item.name}
                       </Link>

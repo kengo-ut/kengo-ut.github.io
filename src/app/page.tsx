@@ -28,7 +28,7 @@ export default function Home() {
     <Layout>
       <Hero />
       {sections.map((Section, index) => (
-        <div key={index} className={`${index % 2 === 0 ? "bg-gray-100" : "bg-white"}`}>
+        <div key={index} className={`${index % 2 === 0 ? "bg-background" : "bg-muted"}`}>
           <Section />
         </div>
       ))}
