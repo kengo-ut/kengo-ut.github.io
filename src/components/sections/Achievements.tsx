@@ -1,29 +1,13 @@
-// Achievements.tsx
 import Section from "@/components/common/Section";
 import StandardCard from "@/components/common/StandardCard";
 import { CardContent } from "@/components/ui/card";
-import { apiUrl } from "@/lib/config";
 import { AchievementInfo } from "@/types";
-import { fetchData } from "@/utils";
-import { useEffect, useState } from "react";
 
-const urlAchievements: string = `${apiUrl}?sheetName=Achievements&cell=A1`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface AchievementsProps {
+  achievements: AchievementInfo[];
+}
 
-const Achievements = () => {
-  const [achievements, setAchievements] = useState<AchievementInfo[]>([]);
-
-  useEffect(() => {
-    fetchData(urlAchievements, options).then((data) => {
-      const content: AchievementInfo[] = JSON.parse(data.value);
-      setAchievements(content);
-    });
-  }, []);
+const Achievements: React.FC<AchievementsProps> = ({ achievements }: AchievementsProps) => {
   return (
     <Section id="achievements" title="Achievements">
       <div className="grid gap-8 md:grid-cols-2">

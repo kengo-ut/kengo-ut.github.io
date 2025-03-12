@@ -1,4 +1,4 @@
-// src/components/layout/Header.tsx
+"use client";
 import ModeToggle from "@/components/common/ModeToggle";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";

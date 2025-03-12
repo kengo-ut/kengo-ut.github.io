@@ -3,19 +3,12 @@ import SkillCard from "@/components/common/SkillCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { apiUrl } from "@/lib/config";
 import { SkillInfo } from "@/types";
-import { fetchData } from "@/utils";
 import { HelpCircle } from "lucide-react";
-import { useEffect, useState } from "react";
 
-const urlSkills: string = `${apiUrl}?sheetName=Skills&cell=A1`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface SkillsProps {
+  skills: SkillInfo[];
+}
 
 const getProgressValue = (level: string): number => {
   switch (level) {
@@ -43,15 +36,7 @@ const getProgressOpacity = (level: string): number => {
   }
 };
 
-const Skills = () => {
-  const [skills, setSkills] = useState<SkillInfo[]>([]);
-
-  useEffect(() => {
-    fetchData(urlSkills, options).then((data) => {
-      const content: SkillInfo[] = JSON.parse(data.value);
-      setSkills(content);
-    });
-  }, []);
+const Skills: React.FC<SkillsProps> = ({ skills }) => {
   return (
     <Section id="skills" title="Skills">
       <div className="flex flex-col gap-8">

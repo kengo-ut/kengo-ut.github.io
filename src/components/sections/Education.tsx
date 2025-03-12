@@ -4,29 +4,14 @@ import StandardCard from "@/components/common/StandardCard";
 import { Badge } from "@/components/ui/badge";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { apiUrl } from "@/lib/config";
 import { EducationInfo } from "@/types";
-import { fetchData } from "@/utils";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-const urlEducation: string = `${apiUrl}?sheetName=Education&cell=A1`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface EducationProps {
+  educations: EducationInfo[];
+}
 
-const Education = () => {
-  const [educations, setEducations] = useState<EducationInfo[]>([]);
-
-  useEffect(() => {
-    fetchData(urlEducation, options).then((data) => {
-      const content: EducationInfo[] = JSON.parse(data.value);
-      setEducations(content);
-    });
-  }, []);
+const Education: React.FC<EducationProps> = ({ educations }: EducationProps) => {
   return (
     <Section id="education" title="Education">
       {/* Education Timeline */}

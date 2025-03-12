@@ -2,28 +2,13 @@ import DynamicIcon from "@/components/common/DynamicIcon";
 import Section from "@/components/common/Section";
 import StandardCard from "@/components/common/StandardCard";
 import { CardContent } from "@/components/ui/card";
-import { apiUrl } from "@/lib/config";
 import { CertificationInfo } from "@/types";
-import { fetchData } from "@/utils";
-import { useEffect, useState } from "react";
 
-const urlCertifications: string = `${apiUrl}?sheetName=Certifications&cell=A1`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface CertificationsProps {
+  certifications: CertificationInfo[];
+}
 
-const Certifications = () => {
-  const [certifications, setCertifications] = useState<CertificationInfo[]>([]);
-
-  useEffect(() => {
-    fetchData(urlCertifications, options).then((data) => {
-      const content: CertificationInfo[] = JSON.parse(data.value);
-      setCertifications(content);
-    });
-  }, []);
+const Certifications: React.FC<CertificationsProps> = ({ certifications }: CertificationsProps) => {
   return (
     <Section id="certifications" title="Certifications">
       <div className="grid gap-8 md:grid-cols-2">

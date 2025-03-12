@@ -4,29 +4,14 @@ import StandardCard from "@/components/common/StandardCard";
 import { Badge } from "@/components/ui/badge";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { apiUrl } from "@/lib/config";
 import { ExperienceInfo } from "@/types";
-import { fetchData } from "@/utils";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-const urlExperience: string = `${apiUrl}?sheetName=Experience&cell=A1`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface ExperienceProps {
+  experiences: ExperienceInfo[];
+}
 
-const Experience = () => {
-  const [experiences, setExperiences] = useState<ExperienceInfo[]>([]);
-
-  useEffect(() => {
-    fetchData(urlExperience, options).then((data) => {
-      const content: ExperienceInfo[] = JSON.parse(data.value);
-      setExperiences(content);
-    });
-  }, []);
+const Experience: React.FC<ExperienceProps> = ({ experiences }: ExperienceProps) => {
   return (
     <Section id="experience" title="Experience">
       {/* Experience Timeline */}

@@ -4,29 +4,15 @@ import StandardCard from "@/components/common/StandardCard";
 import { Badge } from "@/components/ui/badge";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { apiUrl } from "@/lib/config";
+
 import { PublicationInfo } from "@/types";
-import { fetchData } from "@/utils";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-const urlPublications: string = `${apiUrl}?sheetName=Publications&cell=A1`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface PublicationsProps {
+  publications: PublicationInfo[];
+}
 
-const Publications = () => {
-  const [publications, setPublications] = useState<PublicationInfo[]>([]);
-
-  useEffect(() => {
-    fetchData(urlPublications, options).then((data) => {
-      const content: PublicationInfo[] = JSON.parse(data.value);
-      setPublications(content);
-    });
-  }, []);
+const Publications: React.FC<PublicationsProps> = ({ publications }) => {
   return (
     <Section id="publications" title="Publications">
       {/* Publications List */}

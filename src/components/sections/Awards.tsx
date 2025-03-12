@@ -1,30 +1,15 @@
-// Awards.tsx
 import DynamicIcon from "@/components/common/DynamicIcon";
 import Section from "@/components/common/Section";
 import StandardCard from "@/components/common/StandardCard";
 import { CardContent } from "@/components/ui/card";
-import { apiUrl } from "@/lib/config";
 import { AwardInfo } from "@/types";
-import { fetchData } from "@/utils";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 
-const urlAwards: string = `${apiUrl}?sheetName=Awards&cell=A1`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface AwardsProps {
+  awards: AwardInfo[];
+}
 
-const Awards = () => {
-  const [awards, setAwards] = useState<AwardInfo[]>([]);
-
-  useEffect(() => {
-    fetchData(urlAwards, options).then((data) => {
-      const content: AwardInfo[] = JSON.parse(data.value);
-      setAwards(content);
-    });
-  }, []);
+const Awards: React.FC<AwardsProps> = ({ awards }: AwardsProps) => {
   return (
     <Section id="awards" title="Awards">
       <div className="grid gap-8 md:grid-cols-2">
@@ -45,7 +30,16 @@ const Awards = () => {
               </div>
 
               {/* Description */}
-              <p className="mt-2">{award.description}</p>
+              <p>{award.description}</p>
+              <Link
+                href={award.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center underline hover:text-accent gap-2"
+              >
+                <DynamicIcon name="ExternalLink" />
+                View Award
+              </Link>
             </CardContent>
           </StandardCard>
         ))}

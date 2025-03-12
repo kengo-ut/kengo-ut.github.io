@@ -1,26 +1,16 @@
+"use client";
 import DynamicIcon from "@/components/common/DynamicIcon";
 import MiniCard from "@/components/common/MiniCard";
 import Section from "@/components/common/Section";
 import StandardCard from "@/components/common/StandardCard";
 import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
-import { apiUrl } from "@/lib/config";
 import { CoreCompetency, ImageSlide, PersonalInfo } from "@/types";
-import { fetchData } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import nextConfig from "../../../next.config";
 const BASE_PATH = nextConfig.basePath || "";
-
-const urlPersonalInfo: string = `${apiUrl}?sheetName=About&cell=A1`;
-const urlCoreCompetencies: string = `${apiUrl}?sheetName=About&cell=A2`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
 
 const profileImages: ImageSlide[] = [
   { src: `${BASE_PATH}/images/presentation.jpg`, alt: "Conference Presentation" },
@@ -28,27 +18,14 @@ const profileImages: ImageSlide[] = [
   { src: `${BASE_PATH}/images/private.jpg`, alt: "Personal Life" },
 ];
 
-const About = () => {
-  const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({
-    role: "",
-    location: "",
-    selfIntroduction: "",
-    resumeLink: "",
-  });
-  const [coreCompetencies, setCoreCompetencies] = useState<CoreCompetency[]>([]);
+interface AboutProps {
+  personalInfo: PersonalInfo;
+  coreCompetencies: CoreCompetency[];
+}
+
+const About: React.FC<AboutProps> = ({ personalInfo, coreCompetencies }: AboutProps) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useEffect(() => {
-    fetchData(urlPersonalInfo, options).then((data) => {
-      const content: PersonalInfo = JSON.parse(data.value);
-      setPersonalInfo(content);
-    });
-    fetchData(urlCoreCompetencies, options).then((data) => {
-      const content: CoreCompetency[] = JSON.parse(data.value);
-      setCoreCompetencies(content);
-    });
-  }, []);
 
   const handleImageTransition = (newIndex: number) => {
     if (isTransitioning) return;

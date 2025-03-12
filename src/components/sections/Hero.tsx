@@ -1,36 +1,16 @@
 import DynamicIcon from "@/components/common/DynamicIcon";
-import { apiUrl } from "@/lib/config";
 import { HeroInfo, NavItem } from "@/types";
-import { fetchData } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import nextConfig from "../../../next.config";
 const BASE_PATH = nextConfig.basePath || "";
 
-const urlNav: string = `${apiUrl}?sheetName=Hero&cell=A2`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface HeroProps {
+  heroInfo: HeroInfo;
+  navItems: NavItem[];
+}
 
-const Hero = () => {
-  const heroInfo: HeroInfo = {
-    name: "Kengo Ikeuchi",
-    greeting:
-      "Passionate about machine learning and algorithms\n—solving complex problems with elegant and efficient code.",
-  };
-  const [navItems, setNavItems] = useState<NavItem[]>([]);
-
-  useEffect(() => {
-    fetchData(urlNav, options).then((data) => {
-      const content: NavItem[] = JSON.parse(data.value);
-      setNavItems(content);
-    });
-  }, []);
-
+const Hero = ({ heroInfo, navItems }: HeroProps) => {
   return (
     <div className="relative min-h-screen">
       {/* Background Image with Dark Overlay */}

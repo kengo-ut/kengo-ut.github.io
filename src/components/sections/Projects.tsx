@@ -4,29 +4,13 @@ import Section from "@/components/common/Section";
 import { Badge } from "@/components/ui/badge";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { apiUrl } from "@/lib/config";
 import { ProjectInfo } from "@/types";
-import { fetchData } from "@/utils";
-import { useEffect, useState } from "react";
 
-const urlProjects: string = `${apiUrl}?sheetName=Projects&cell=A1`;
-const options: RequestInit = {
-  method: "GET",
-  headers: {
-    "Content-Type": "text/plain",
-  },
-};
+interface ProjectsProps {
+  projects: ProjectInfo[];
+}
 
-const Projects = () => {
-  const [projects, setProjects] = useState<ProjectInfo[]>([]);
-
-  useEffect(() => {
-    fetchData(urlProjects, options).then((data) => {
-      const content: ProjectInfo[] = JSON.parse(data.value);
-      setProjects(content);
-    });
-  }, []);
-
+const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   return (
     <Section id="projects" title="Projects">
       {/* Projects Grid */}
