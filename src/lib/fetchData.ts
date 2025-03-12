@@ -18,8 +18,7 @@ const options: RequestInit = {
   method: "GET",
   headers: {
     "Content-Type": "text/plain"
-  },
-  cache: "no-store",
+  }
 };
 
 async function fetchData<T>(sheetName: string, cell: string): Promise<T> {
