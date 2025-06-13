@@ -8,7 +8,7 @@ import { title } from "process";
 interface ProjectCardProps {
   cardTitle: string;
   period: string;
-  image?: string;
+  imageUrl?: string;
   demoUrl?: string;
   repoUrl?: string;
   children: React.ReactNode;
@@ -17,19 +17,20 @@ interface ProjectCardProps {
 const ProjectCard = ({
   cardTitle,
   period,
-  image,
+  imageUrl,
   demoUrl,
   repoUrl,
   children,
 }: ProjectCardProps) => {
+
   return (
     <Card className="bg-card text-card-foreground flex flex-col border">
       {/* Header */}
       <CardHeader className="flex flex-col gap-4">
-        {image && (
+        {imageUrl && (
           <div className="-mx-6 -mt-6 relative h-48 overflow-hidden">
             <Image
-              src={image}
+              src={imageUrl}
               alt={title}
               fill
               style={{ objectFit: "cover" }}

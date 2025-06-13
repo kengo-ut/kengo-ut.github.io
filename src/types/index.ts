@@ -118,7 +118,7 @@ export interface ProjectInfo {
   title: string;
   period: string;
   description: string;
-  image?: string;
+  imageUrl?: string;
   features?: string[];
   technologies: string[];
   demoUrl?: string;

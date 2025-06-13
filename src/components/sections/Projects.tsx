@@ -20,7 +20,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             key={index}
             cardTitle={project.title}
             period={project.period}
-            image={project.image}
+            imageUrl={project.imageUrl}
             demoUrl={project.demoUrl}
             repoUrl={project.repoUrl}
           >
