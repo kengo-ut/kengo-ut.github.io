@@ -26,7 +26,7 @@ const Header = () => {
       height: "0px",
       transition: {
         duration: 0.3,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
         staggerChildren: 0.05,
         when: "afterChildren",
       },
@@ -36,7 +36,7 @@ const Header = () => {
       height: "auto",
       transition: {
         duration: 0.3,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
         staggerChildren: 0.05,
         when: "beforeChildren",
       },
@@ -49,7 +49,7 @@ const Header = () => {
       x: -16,
       transition: {
         duration: 0.2,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
     open: {
@@ -57,7 +57,7 @@ const Header = () => {
       x: 0,
       transition: {
         duration: 0.2,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
