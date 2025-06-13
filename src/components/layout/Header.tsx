@@ -23,7 +23,7 @@ const Header = () => {
   const menuVariants = {
     closed: {
       opacity: 0,
-      height: 0,
+      height: "0px",
       transition: {
         duration: 0.3,
         ease: "easeInOut",

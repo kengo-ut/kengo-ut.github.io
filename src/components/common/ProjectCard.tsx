@@ -22,7 +22,6 @@ const ProjectCard = ({
   repoUrl,
   children,
 }: ProjectCardProps) => {
-
   return (
     <Card className="bg-card text-card-foreground flex flex-col border">
       {/* Header */}
