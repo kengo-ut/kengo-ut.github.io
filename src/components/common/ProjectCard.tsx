@@ -27,7 +27,7 @@ const ProjectCard = ({
       {/* Header */}
       <CardHeader className="flex flex-col gap-4">
         {imageUrl && (
-          <div className="-mx-6 -mt-6 relative h-48 overflow-hidden">
+          <div className="-mx-6 -mt-6 relative h-80 overflow-hidden">
             <Image
               src={imageUrl}
               alt={title}
