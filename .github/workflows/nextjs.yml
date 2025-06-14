@@ -45,7 +45,7 @@ jobs:
 
       # 5. 依存関係をインストール
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
         
       # 6. Next.jsでビルドを実行
       - name: Build with Next.js
